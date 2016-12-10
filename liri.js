@@ -5,7 +5,11 @@ var userinput = process.argv[2];
 //twitter
 var Twitter = require('twitter');
  //keys
-var keys = require('./keys.js').keys.twitterKeys;
+var keys = require('./keys.js');
+
+var request = require('request');
+
+var fs = require('fs'); 
  
 
  function tweets() {
@@ -15,18 +19,19 @@ var keys = require('./keys.js').keys.twitterKeys;
  var params = {screen_name: 'aimanknight', count: 20};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
-    console.log(tweets);
+  	
+     for (var i = 0; i < tweets.length; i++) {
+            console.log((parseInt([i]) + 1) + '. ' + tweets[i].text);
+        }
   }
 })
-// };
 
+};
 
-// tweets();
+if (userinput === "my-tweets") {
 
-// if (userinput === "my-tweets") {
-
-// 	tweets();
-// };
+	tweets();
+};
 
 // 	else if (userinput === "spotify-this-song") {
 
