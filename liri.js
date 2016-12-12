@@ -48,15 +48,11 @@ function spotifyThis() {
 
         return;
     } else {
-
-    		var data = data.tracks.items;
-
-			for (var i = 0; i < data.length; i++) {
-	    	console.log('Artist: ', data[i].artists.name);
-	    	console.log('Song Name: ', data[i].name);
-	    	console.log('Preview Link: ', data[i].preview_url);
-	    	console.log('Album: ', data[i].album.name);
-	    }
+	    	console.log('Artist: ', data.tracks.items[0].artists[0].name);
+	    	console.log('Song Name: ', data.tracks.items[0].name);
+	    	console.log('Preview Link: ', data.tracks.items[0].preview_url);
+	    	console.log('Album: ', data.tracks.items[0].album.name)
+	    
 	}
  })
     
