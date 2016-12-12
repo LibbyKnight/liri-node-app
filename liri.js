@@ -1,6 +1,6 @@
 
 //records user input
-var userinput = process.argv[2];
+var userInput = process.argv[2];
  //keys
 var keys = require('./keys.js');
 
@@ -82,16 +82,40 @@ function movie() {
 	});
 }
 
+//liri do what it says
+function liriDoes() {
+
+	fs.readFile("random.txt", "utf8", function(error, data) {
+		console.log(data);
+		spotifyThis();
+
+	})
+};
+
+//liri log user input- bonus
+function liriWrites() {
+
+	var input= process.argv[2] && process.argv[3];
+
+	fs.writeFile("log.txt", userInput, function(err) {
+
+  if (err) {
+    return console.log(error);
+  	};
+});
+}
 
 
 //user arguments
-if (userinput === "my-tweets") {
+if (userInput === "my-tweets") {
 
 	twitter();
-} else if (userinput === "spotify-this-song") {
-
+} else if (userInput === "spotify-this-song") {
 	spotifyThis();
-} else if (userinput === "movie-this") {
+} else if (userInput === "movie-this") {
 	movie();
-}	
+} else if (userInput === "do-what-it-says") {
+	liriDoes();
+};
 
+liriWrites();
