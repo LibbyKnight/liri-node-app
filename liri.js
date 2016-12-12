@@ -87,7 +87,11 @@ function liriDoes() {
 
 	fs.readFile("random.txt", "utf8", function(error, data) {
 		console.log(data);
+		
+		
+		userSong = data.split(',')[3];
 		spotifyThis();
+		
 
 	})
 };
@@ -97,7 +101,7 @@ function liriWrites() {
 
 	var input= process.argv[2] && process.argv[3];
 
-	fs.writeFile("log.txt", userInput, function(err) {
+	fs.appendFile("log.txt", userInput + ", " + "\r\n", function(err) {
 
   if (err) {
     return console.log(error);
